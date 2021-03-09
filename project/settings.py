@@ -120,3 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BOOTSTRAP4 = {
+    # Include jQuery with Bootstrap JavaScript False|falsy|slim|full (default=False)
+    # False - means tag bootstrap_javascript use default value - `falsy` and does not include jQuery)
+    'include_jquery': 'full',
+}

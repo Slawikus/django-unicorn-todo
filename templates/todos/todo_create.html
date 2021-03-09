@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
   <p>Create todo</p>
 
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        Save
+      </button>
+      <a class="btn btn-outline" href="{% url 'todo_list' %}">Go back</a>
+    {% endbuttons %}
   </form>
-
-  <a href="{% url 'todo_list' %}">Go back</a>
 {% endblock %}
