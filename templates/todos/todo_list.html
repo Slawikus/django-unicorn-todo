@@ -4,7 +4,10 @@
   <p>Todos</p>
   <ul>
   {% for todo in todos %}
-    <li>{{ todo.description }}</li>
+    <li>
+      {{ todo.description }} - {{ todo.due_date }} - {{ todo.is_completed }}
+      <a href="{% url 'todo_update' todo.pk %}">Update</a>
+    </li>
   {% endfor %}
   </ul>
 {% endblock %}
