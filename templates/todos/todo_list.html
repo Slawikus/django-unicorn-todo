@@ -7,6 +7,10 @@
     <li>
       {{ todo.description }} - {{ todo.due_date }} - {{ todo.is_completed }}
       <a href="{% url 'todo_update' todo.pk %}">Update</a>
+      <form action="{% url 'todo_delete' todo.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+      </form>
     </li>
   {% endfor %}
   </ul>
