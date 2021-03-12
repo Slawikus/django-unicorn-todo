@@ -1,0 +1,37 @@
+{% load unicorn %}
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Description</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in todos %}
+        <tr>
+          <th class="align-middle" scope="row">{{ todo.id }}</th>
+          <td class="align-middle">
+            {% if todo.is_completed %} <del>{{ todo.description }}</del> {% else %}{{ todo.description }} {% endif %}
+          </td>
+          <td class="align-middle">{% if todo.due_date %} {{ todo.due_date }} {% endif %}</td>
+          <td>
+            <form action="{% url 'todo_delete' todo.pk %}" method="post">
+              <div class="btn-group">
+                <a class="btn" href="{% url 'todo_update' todo.pk %}"><i class="bi bi-pen"></i></a>
+                  {% csrf_token %}
+                  <button class="btn" type="submit"><i class="bi bi-x-circle"></i></button>
+              </div>
+            </form>
+            <button unicorn:click="delete({{ todo.id }})">Delete?</button>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% unicorn 'add-todo' parent=view %}
+</div>

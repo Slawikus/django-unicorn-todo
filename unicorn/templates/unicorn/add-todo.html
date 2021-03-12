@@ -1,0 +1,25 @@
+<div>
+  <div class="form-inline">
+    <div class="form-group">
+      <input
+          class="form-control"
+          placeholder="Description"
+          unicorn:model.defer="description"
+          id="description"
+          type="text"
+      >
+    </div>
+
+    <div class="form-group mx-sm-3">
+      <input
+          class="form-control"
+          placeholder="2012-01-02"
+          unicorn:model.defer="due_date"
+          id="due_date"
+          type="text"
+      >
+    </div>
+
+    <button unicorn:click="add" class="btn btn-primary">Add Todo</button>
+  </div>
+</div>
