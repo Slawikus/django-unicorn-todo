@@ -1,16 +1,20 @@
 <div>
-  <div class="form-inline">
-    <div class="form-group">
+  <div class="form-row">
+    <div class="col-6">
       <input
-          class="form-control"
+          class="form-control {% if unicorn.errors.description %}is-invalid{% endif %}"
           placeholder="Description"
           unicorn:model.defer="description"
           id="description"
           type="text"
       >
+      {% if unicorn.errors.description %}
+        <div class="invalid-feedback">
+          {{ unicorn.errors.description.0.message }}
+        </div>
+      {% endif %}
     </div>
-
-    <div class="form-group mx-sm-3">
+    <div class="col-2">
       <input
           class="form-control"
           placeholder="2012-01-02"
@@ -19,7 +23,8 @@
           type="text"
       >
     </div>
-
-    <button unicorn:click="add" class="btn btn-primary">Add Todo</button>
+    <div class="col-4">
+      <button unicorn:click="add" class="btn btn-primary">Add Todo</button>
+    </div>
   </div>
 </div>
