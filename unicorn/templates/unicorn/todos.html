@@ -12,23 +12,7 @@
     </thead>
     <tbody>
       {% for todo in todos %}
-        <tr>
-          <th class="align-middle" scope="row">{{ todo.id }}</th>
-          <td class="align-middle">
-            {% if todo.is_completed %} <del>{{ todo.description }}</del> {% else %}{{ todo.description }} {% endif %}
-          </td>
-          <td class="align-middle">{% if todo.due_date %} {{ todo.due_date }} {% endif %}</td>
-          <td>
-            <form action="{% url 'todo_delete' todo.pk %}" method="post">
-              <div class="btn-group">
-                <a class="btn" href="{% url 'todo_update' todo.pk %}"><i class="bi bi-pen"></i></a>
-                  {% csrf_token %}
-                  <button class="btn" type="submit"><i class="bi bi-x-circle"></i></button>
-              </div>
-            </form>
-            <button unicorn:click="delete({{ todo.id }})">Delete?</button>
-          </td>
-        </tr>
+        {% unicorn 'todo' parent=view todo=todo key=todo.id %}
       {% endfor %}
     </tbody>
   </table>

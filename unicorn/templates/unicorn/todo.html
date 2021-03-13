@@ -1,0 +1,13 @@
+<tr>
+  <th class="align-middle" scope="row">{{ todo.id }}</th>
+  <td class="align-middle">
+    {% if todo.is_completed %} <del>{{ todo.description }}</del> {% else %}{{ todo.description }} {% endif %}
+  </td>
+  <td class="align-middle">{% if todo.due_date %} {{ todo.due_date }} {% endif %}</td>
+  <td>
+    <div class="btn-group">
+      <a class="btn" unicorn:click="edit()"><i class="bi bi-pen"></i></a>
+      <button unicorn:click="delete()" class="btn" type="submit"><i class="bi bi-x-circle"></i></button>
+    </div>
+  </td>
+</tr>
