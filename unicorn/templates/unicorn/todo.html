@@ -1,35 +1,4 @@
-<tr>
-  <script>
-    function setFocus() {
-      document.getElementById("inplaceEditingInput").focus();
-    }
-  </script>
-
-  <th class="align-middle" scope="row">{{ todo.id }}</th>
-  <td class="align-middle">
-  {% if is_editing %}
-    <div class="input-group mb-3">
-      <input
-        class="form-control"
-        placeholder="Description"
-        unicorn:model.defer="todo.description"
-        type="text"
-        id="inplaceEditingInput"
-      >
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" unicorn:click="save()" type="button">Save</button>
-      </div>
-    </div>
-  {% else %}
-    {% if todo.is_completed %} <del>{{ todo.description }}</del> {% else %}{{ todo.description }} {% endif %}
-  {% endif %}
-  </td>
-  <td class="align-middle">{% if todo.due_date %} {{ todo.due_date }} {% endif %}</td>
-  <td>
-    <div class="btn-group">
-      <button class="btn" unicorn:click="toggle_edit()"><i class="bi bi-pen"></i></button>
-      <button unicorn:click="delete()" class="btn" type="submit"><i class="bi bi-x-circle"></i></button>
-    </div>
-  </td>
-</tr>
+<li>
+  ({{ todo.id }}) - {{ todo.description }} - <button unicorn:click="delete()">Delete</button>
+</li>
 

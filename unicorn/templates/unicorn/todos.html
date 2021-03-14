@@ -1,21 +1,11 @@
 {% load unicorn %}
 
 <div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Description</th>
-        <th scope="col">Due Date</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for todo in todos %}
-        {% unicorn 'todo' parent=view todo=todo key=todo.id %}
-      {% endfor %}
-    </tbody>
-  </table>
+  <ul>
+    {% for todo in todos %}
+      {% unicorn 'todo' parent=view todo=todo key=todo.id %}
+    {% endfor %}
+  </ul>
 
   {% unicorn 'add-todo' parent=view %}
 </div>
