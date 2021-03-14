@@ -1,30 +1,4 @@
 <div>
-  <div class="form-row">
-    <div class="col-6">
-      <input
-          class="form-control {% if unicorn.errors.description %}is-invalid{% endif %}"
-          placeholder="Description"
-          unicorn:model.defer="description"
-          id="description"
-          type="text"
-      >
-      {% if unicorn.errors.description %}
-        <div class="invalid-feedback">
-          {{ unicorn.errors.description.0.message }}
-        </div>
-      {% endif %}
-    </div>
-    <div class="col-2">
-      <input
-          class="form-control"
-          placeholder="2012-01-02"
-          unicorn:model.defer="due_date"
-          id="due_date"
-          type="text"
-      >
-    </div>
-    <div class="col-4">
-      <button unicorn:click="add" class="btn btn-primary">Add Todo</button>
-    </div>
-  </div>
+  <input unicorn:model.defer="description" id="description" type="text">
+  <button unicorn:click="add">Add Todo</button>
 </div>
