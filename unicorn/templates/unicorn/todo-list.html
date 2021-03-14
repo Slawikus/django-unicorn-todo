@@ -1,6 +1,7 @@
+{% load unicorn %}
+
 <div>
-  <input unicorn:model="description" id="description" type="text">
-  <button unicorn:click="add">Add Todo</button>
+  {% unicorn 'add-todo' parent=view %}
 
   <ul>
     {% for todo in todos %}

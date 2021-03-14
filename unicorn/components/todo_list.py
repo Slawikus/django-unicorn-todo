@@ -5,14 +5,9 @@ from todos.models import Todo
 
 class TodoListView(UnicornView):
     todos = Todo.objects.none()
-    description = None
 
     def hydrate(self):
         self.load_todos()
-
-    def add(self):
-        Todo.objects.create(description=self.description)
-        self.description = None
 
     def delete(self, id):
         self.todos.get(pk=id).delete()
