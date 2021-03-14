@@ -3,7 +3,5 @@
 {% load unicorn %}
 
 {% block content %}
-  <p>Todos (<a href="{% url 'todo_new' %}">add new one</a>)</p>
-
   {% unicorn 'todos' %}
 {% endblock %}
