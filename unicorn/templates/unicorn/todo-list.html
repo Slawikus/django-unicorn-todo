@@ -1,13 +1,12 @@
-{% load unicorn %}
-
 <div>
   <input unicorn:model="description" id="description" type="text">
   <button unicorn:click="add">Add Todo</button>
-  {{ description }}
 
   <ul>
     {% for todo in todos %}
-      {% unicorn 'todo' parent=view todo=todo key=todo.id %}
+      <li>
+        ({{ todo.id }}) - {{ todo.description }} - <button unicorn:click="delete({{ todo.id }})">Delete</button>
+      </li>
     {% endfor %}
   </ul>
 </div>

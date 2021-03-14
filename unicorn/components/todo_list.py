@@ -10,16 +10,12 @@ class TodoListView(UnicornView):
     def hydrate(self):
         self.load_todos()
 
+    def add(self):
+        Todo.objects.create(description=self.description)
+        self.description = None
+
     def delete(self, id):
-        Todo.objects.get(pk=id).delete()
+        self.todos.get(pk=id).delete()
 
     def load_todos(self):
         self.todos = Todo.objects.all()
-
-    def add(self):
-        todo = Todo.objects.create(description=self.description)
-
-        self.load_todos()
-        self.description = None
-
-        return todo
