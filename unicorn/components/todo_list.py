@@ -1,9 +1,11 @@
-from todos.models import Todo
 from django_unicorn.components import UnicornView
 
+from todos.models import Todo
 
-class TodosView(UnicornView):
+
+class TodoListView(UnicornView):
     todos = Todo.objects.none()
+    description = None
 
     def hydrate(self):
         self.load_todos()
@@ -13,3 +15,11 @@ class TodosView(UnicornView):
 
     def load_todos(self):
         self.todos = Todo.objects.all()
+
+    def add(self):
+        todo = Todo.objects.create(description=self.description)
+
+        self.load_todos()
+        self.description = None
+
+        return todo
